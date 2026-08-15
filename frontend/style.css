@@ -2245,70 +2245,39 @@ button {
     background: #eeeaff;
     font-weight: 700;
 }
-/* ==========================================
-   SMALLER COMPANY MODAL
-========================================== */
-
-#companyModal .modal-box {
-    width: 92%;
-    max-width: 430px;
-    max-height: 85vh;
-    padding: 18px;
-    overflow-y: auto;
-    border-radius: 18px;
-}
-
-#companyModal .modal-heading {
-    margin-bottom: 12px;
-}
-
-#companyModal .modal-heading h2 {
-    font-size: 20px;
-}
-
-#companyModal label {
-    font-size: 13px;
-    margin-top: 8px;
-    margin-bottom: 5px;
-}
-
-#companyModal input,
-#companyModal textarea,
-#companyModal select {
-    padding: 9px 11px;
-    font-size: 14px;
-}
-
-#companyModal textarea {
-    min-height: 70px;
-}
-
-#companyModal button {
-    min-height: 40px;
-}
-
-/* Mobile */
+/* COMPACT COMPANY POPUP ON MOBILE */
 @media (max-width: 600px) {
     #companyModal .modal-box {
-        width: 88%;
-        max-width: 360px;
-        max-height: 80vh;
-        padding: 15px;
-        border-radius: 16px;
-    }
-
-    #companyModal .modal-heading h2 {
-        font-size: 18px;
-    }
-
-    #companyModal input,
-    #companyModal textarea,
-    #companyModal select {
-        padding: 8px 10px;
-        font-size: 13px;
+        width: 88vw !important;
+        max-width: 340px !important;
+        max-height: 65vh !important;
+        padding: 12px !important;
     }
 
     #companyModal label {
-        font-size: 12px;
+        margin: 4px 0 2px;
+        font-size: 11px;
+    }
+
+    #companyModal input,
+    #companyModal textarea {
+        padding: 6px 8px !important;
+        font-size: 12px !important;
+    }
+
+    #companyModal textarea {
+        min-height: 40px !important;
+    }
+
+    #companyModal .status-options button {
+        min-height: 30px;
+        padding: 5px;
+        font-size: 11px;
+    }
+
+    #companyModal .save-btn {
+        min-height: 34px;
+        margin-top: 6px;
+        padding: 6px;
     }
 }
