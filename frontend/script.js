@@ -1398,40 +1398,55 @@ function closeTaskModal() {
 // ==========================================
 // CATEGORY
 // ==========================================
+function selectCategory(category) {
+    selectedCategory = category;
 
-function selectCategory(
-    category
-) {
+    const input = document.getElementById("taskCategory");
 
-    selectedCategory =
-        category;
+    if (input) {
+        input.value = category;
+    }
 
+    document.querySelectorAll("#taskModal .task-options button")
+        .forEach(function(button) {
+            button.classList.remove("selected");
+        });
 
-    document.getElementById(
-        "taskCategory"
-    ).value =
-        category;
+    document.querySelectorAll("#taskModal .task-options button")
+        .forEach(function(button) {
+            if (button.textContent
+                .toLowerCase()
+                .includes(category.toLowerCase())) {
 
+                button.classList.add("selected");
+            }
+        });
 }
 
 
-// ==========================================
-// PRIORITY
-// ==========================================
+function selectPriority(priority) {
+    selectedPriority = priority;
 
-function selectPriority(
-    priority
-) {
+    const input = document.getElementById("taskPriority");
 
-    selectedPriority =
-        priority;
+    if (input) {
+        input.value = priority;
+    }
 
+    document.querySelectorAll("#taskModal .task-options button")
+        .forEach(function(button) {
+            button.classList.remove("selected");
+        });
 
-    document.getElementById(
-        "taskPriority"
-    ).value =
-        priority;
+    document.querySelectorAll("#taskModal .task-options button")
+        .forEach(function(button) {
+            if (button.textContent
+                .toLowerCase()
+                .includes(priority.toLowerCase())) {
 
+                button.classList.add("selected");
+            }
+        });
 }
 
 

@@ -2225,3 +2225,90 @@ button {
         margin-top: 12px;
     }
 }
+#taskModal .task-options {
+    position: relative;
+    z-index: 10;
+}
+
+#taskModal .task-options button {
+    position: relative;
+    z-index: 11;
+    pointer-events: auto !important;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+}
+
+#taskModal .task-options button.selected {
+    border: 2px solid #6c63ff;
+    background: #eeeaff;
+    font-weight: 700;
+}
+/* ==========================================
+   SMALLER COMPANY MODAL
+========================================== */
+
+#companyModal .modal-box {
+    width: 92%;
+    max-width: 430px;
+    max-height: 85vh;
+    padding: 18px;
+    overflow-y: auto;
+    border-radius: 18px;
+}
+
+#companyModal .modal-heading {
+    margin-bottom: 12px;
+}
+
+#companyModal .modal-heading h2 {
+    font-size: 20px;
+}
+
+#companyModal label {
+    font-size: 13px;
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+#companyModal input,
+#companyModal textarea,
+#companyModal select {
+    padding: 9px 11px;
+    font-size: 14px;
+}
+
+#companyModal textarea {
+    min-height: 70px;
+}
+
+#companyModal button {
+    min-height: 40px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    #companyModal .modal-box {
+        width: 88%;
+        max-width: 360px;
+        max-height: 80vh;
+        padding: 15px;
+        border-radius: 16px;
+    }
+
+    #companyModal .modal-heading h2 {
+        font-size: 18px;
+    }
+
+    #companyModal input,
+    #companyModal textarea,
+    #companyModal select {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    #companyModal label {
+        font-size: 12px;
+    }
+}
