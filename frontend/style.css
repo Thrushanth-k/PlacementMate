@@ -2136,3 +2136,92 @@ button {
     }
 
 }
+/* Mobile task button fix */
+@media (max-width: 600px) {
+
+    .task-options {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .task-options button {
+        width: 100%;
+        min-width: 0;
+        min-height: 48px;
+        padding: 10px 8px;
+        margin: 0;
+        box-sizing: border-box;
+
+        font-size: 14px;
+        white-space: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .task-options button:active {
+        transform: scale(0.98);
+    }
+
+    #taskForm input,
+    #taskForm textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    #taskForm .save-btn {
+        width: 100%;
+        min-height: 48px;
+    }
+}
+/* Smaller task popup on mobile */
+@media (max-width: 600px) {
+
+    #taskModal .modal-box {
+        width: 88%;
+        max-width: 360px;
+        max-height: 82vh;
+        padding: 18px;
+        border-radius: 18px;
+        overflow-y: auto;
+        box-sizing: border-box;
+    }
+
+    #taskModal .modal-heading h2 {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    #taskModal label {
+        font-size: 14px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    #taskModal input,
+    #taskModal textarea {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    #taskModal textarea {
+        min-height: 70px;
+    }
+
+    #taskModal .task-options {
+        gap: 8px;
+    }
+
+    #taskModal .task-options button {
+        min-height: 42px;
+        padding: 8px 6px;
+        font-size: 13px;
+    }
+
+    #taskModal .save-btn {
+        min-height: 44px;
+        margin-top: 12px;
+    }
+}
