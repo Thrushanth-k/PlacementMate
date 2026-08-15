@@ -1,5 +1,4 @@
-const API_URL = "http://192.168.29.20:5000/api";
-
+const API_URL = "https://placementmate.onrender.com/api";
 let companies = [];
 let tasks = [];
 
