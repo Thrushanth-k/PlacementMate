@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>PlacementMate</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+    <!-- HEADER -->
+
+    <header class="top-header">
+
+        <div>
+
+            <h1>
+                PlacementMate
+            </h1>
+
+            <p>
+                Your placement journey, organized.
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         HOME
+    =========================================== -->
+
+    <section
+        id="homePage"
+        class="page active-page">
+
+
+        <div class="welcome">
+
+            <h2>
+                Hey! 👋
+            </h2>
+
+            <p>
+                Let's get you placement ready.
+            </p>
+
+        </div>
+
+
+
+        <!-- DASHBOARD -->
+
+        <div class="dashboard-card">
+
+
+            <div class="dashboard-title">
+
+                <div>
+
+                    <h2>
+                        📊 Placement Summary
+                    </h2>
+
+                    <p>
+                        Your placement progress
+                    </p>
+
+                </div>
+
+
+                <div class="success-circle">
+
+                    <strong id="successRate">
+                        0%
+                    </strong>
+
+                    <small>
+                        Success
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="dashboard-grid">
+
+
+                <div class="dashboard-stat">
+
+                    <span>
+                        🏢
+                    </span>
+
+                    <strong id="totalCompanies">
+                        0
+                    </strong>
+
+                    <small>
+                        Total Drives
+                    </small>
+
+                </div>
+
+
+
+                <div class="dashboard-stat">
+
+                    <span>
+                        📅
+                    </span>
+
+                    <strong id="homeUpcoming">
+                        0
+                    </strong>
+
+                    <small>
+                        Upcoming
+                    </small>
+
+                </div>
+
+
+
+                <div class="dashboard-stat">
+
+                    <span>
+                        ✅
+                    </span>
+
+                    <strong id="homeAttended">
+                        0
+                    </strong>
+
+                    <small>
+                        Attended
+                    </small>
+
+                </div>
+
+
+
+                <div class="dashboard-stat">
+
+                    <span>
+                        🎉
+                    </span>
+
+                    <strong id="homeSelected">
+                        0
+                    </strong>
+
+                    <small>
+                        Selected
+                    </small>
+
+                </div>
+
+
+
+                <div class="dashboard-stat">
+
+                    <span>
+                        ❌
+                    </span>
+
+                    <strong id="homeRejected">
+                        0
+                    </strong>
+
+                    <small>
+                        Rejected
+                    </small>
+
+                </div>
+
+
+
+                <div class="dashboard-stat">
+
+                    <span>
+                        🚫
+                    </span>
+
+                    <strong id="homeNotGoing">
+                        0
+                    </strong>
+
+                    <small>
+                        Not Going
+                    </small>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- UPCOMING DRIVES -->
+
+        <div class="section-title">
+
+            <h2>
+                🔔 Upcoming Drives
+            </h2>
+
+            <button
+                onclick="openCompanyModal()">
+
+                + Add
+
+            </button>
+
+        </div>
+
+
+        <div id="upcomingList"></div>
+
+
+
+        <!-- QUICK TASKS -->
+
+        <div class="section-title">
+
+            <h2>
+                📚 Quick Tasks
+            </h2>
+
+            <button
+                onclick="openTaskModal()">
+
+                + Add
+
+            </button>
+
+        </div>
+
+
+        <div id="homeTasks"></div>
+
+
+    </section>
+
+
+
+    <!-- ==========================================
+         COMPANIES
+    =========================================== -->
+
+   <!-- ================= COMPANIES ================= -->
+
+<section id="companiesPage" class="page">
+
+    <div class="page-heading">
+
+        <div>
+            <h2>🏢 Placement Drives</h2>
+
+            <p>
+                Track every company you apply for.
+            </p>
+        </div>
+
+        <button
+            class="primary-btn"
+            onclick="openCompanyModal()">
+
+            + Add
+
+        </button>
+
+    </div>
+
+
+    <!-- SEARCH BOX -->
+
+    <div class="search-box">
+
+        <span>🔍</span>
+
+        <input
+            id="companySearch"
+            type="text"
+            placeholder="Search companies..."
+            oninput="searchCompanies()">
+
+        <button
+            id="clearSearch"
+            onclick="clearSearch()">
+
+            ×
+
+        </button>
+
+    </div>
+
+
+    <!-- FILTER BUTTONS -->
+
+    <div class="filter-row">
+
+        <button
+            class="filter-btn active-filter"
+            onclick="filterCompanies('All', this)">
+
+            All
+
+        </button>
+
+
+        <button
+            class="filter-btn"
+            onclick="filterCompanies('Upcoming', this)">
+
+            Upcoming
+
+        </button>
+
+
+        <button
+            class="filter-btn"
+            onclick="filterCompanies('Attended', this)">
+
+            Attended
+
+        </button>
+
+
+        <button
+            class="filter-btn"
+            onclick="filterCompanies('Selected', this)">
+
+            Selected
+
+        </button>
+
+
+        <button
+            class="filter-btn"
+            onclick="filterCompanies('Rejected', this)">
+
+            Rejected
+
+        </button>
+
+
+        <button
+            class="filter-btn"
+            onclick="filterCompanies('Not Going', this)">
+
+            Not Going
+
+        </button>
+
+    </div>
+
+
+    <!-- COMPANY LIST -->
+
+    <div id="companyList"></div>
+
+</section>
+
+    <!-- ==========================================
+         CALENDAR
+    =========================================== -->
+
+    <section
+        id="calendarPage"
+        class="page">
+
+
+        <div class="page-heading">
+
+            <div>
+
+                <h2>
+                    📅 Calendar
+                </h2>
+
+                <p>
+                    Your drives and study plans.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="calendar">
+
+
+            <div class="calendar-top">
+
+
+                <button
+                    onclick="changeMonth(-1)">
+
+                    ‹
+
+                </button>
+
+
+                <h2 id="calendarTitle">
+                    August 2026
+                </h2>
+
+
+                <button
+                    onclick="changeMonth(1)">
+
+                    ›
+
+                </button>
+
+
+            </div>
+
+
+
+            <div class="weekdays">
+
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span>Fri</span>
+                <span>Sat</span>
+                <span>Sun</span>
+
+            </div>
+
+
+
+            <div
+                id="calendarDays"
+                class="calendar-days">
+            </div>
+
+
+
+            <div class="calendar-legend">
+
+                <span>
+
+                    <i class="blue-dot"></i>
+
+                    Company
+
+                </span>
+
+
+                <span>
+
+                    <i class="green-dot"></i>
+
+                    Task
+
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="section-title">
+
+            <h2 id="selectedDateTitle">
+                Select a date
+            </h2>
+
+        </div>
+
+
+        <div id="dateEvents"></div>
+
+
+    </section>
+
+
+
+    <!-- ==========================================
+         TASKS
+    =========================================== -->
+
+    <section
+        id="tasksPage"
+        class="page">
+
+
+        <div class="page-heading">
+
+
+            <div>
+
+                <h2>
+                    📚 Study Planner
+                </h2>
+
+                <p>
+                    Prepare before the placement drive.
+                </p>
+
+            </div>
+
+
+            <button
+                class="primary-btn"
+                onclick="openTaskModal()">
+
+                + Add Task
+
+            </button>
+
+
+        </div>
+
+
+
+        <div class="progress-card">
+
+
+            <div class="progress-text">
+
+                <strong id="taskProgressText">
+                    0 / 0 completed
+                </strong>
+
+
+                <span id="progressPercent">
+                    0%
+                </span>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div
+                    id="progressFill"
+                    class="progress-fill">
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div id="taskList"></div>
+
+
+    </section>
+
+
+
+    <!-- ==========================================
+         NOTES
+    =========================================== -->
+
+    <section
+        id="notesPage"
+        class="page">
+
+
+        <div class="page-heading">
+
+            <div>
+
+                <h2>
+                    📝 Notes
+                </h2>
+
+                <p>
+                    Save important placement information.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="notes-card">
+
+
+            <textarea
+                id="generalNotes"
+                placeholder="Write your placement notes here..."></textarea>
+
+
+            <button
+                class="primary-btn"
+                onclick="saveNotes()">
+
+                💾 Save Notes
+
+            </button>
+
+
+            <p
+                id="notesSaved"
+                class="saved-message">
+            </p>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==========================================
+         BOTTOM NAV
+    =========================================== -->
+
+    <nav class="bottom-nav">
+
+
+        <button
+            class="nav-btn active-nav"
+            onclick="showPage('homePage', this)">
+
+            <span>
+                🏠
+            </span>
+
+            <small>
+                Home
+            </small>
+
+        </button>
+
+
+
+        <button
+            class="nav-btn"
+            onclick="showPage('companiesPage', this)">
+
+            <span>
+                🏢
+            </span>
+
+            <small>
+                Companies
+            </small>
+
+        </button>
+
+
+
+        <button
+            class="nav-btn"
+            onclick="showPage('calendarPage', this)">
+
+            <span>
+                📅
+            </span>
+
+            <small>
+                Calendar
+            </small>
+
+        </button>
+
+
+
+        <button
+            class="nav-btn"
+            onclick="showPage('tasksPage', this)">
+
+            <span>
+                📚
+            </span>
+
+            <small>
+                Tasks
+            </small>
+
+        </button>
+
+
+
+        <button
+            class="nav-btn"
+            onclick="showPage('notesPage', this)">
+
+            <span>
+                📝
+            </span>
+
+            <small>
+                Notes
+            </small>
+
+        </button>
+
+
+    </nav>
+
+
+</div>
+
+
+
+<!-- ==========================================
+     COMPANY MODAL
+=========================================== -->
+
+<div
+    id="companyModal"
+    class="modal">
+
+
+    <div class="modal-box">
+
+
+        <div class="modal-heading">
+
+
+            <h2 id="companyModalTitle">
+                Add Company
+            </h2>
+
+
+            <button
+                onclick="closeCompanyModal()">
+
+                ×
+
+            </button>
+
+
+        </div>
+
+
+
+        <form id="companyForm">
+
+
+            <input
+                type="hidden"
+                id="editingCompanyId">
+
+
+            <label>
+                Company Name
+            </label>
+
+
+            <input
+                id="companyName"
+                type="text"
+                placeholder="Example: TCS"
+                required>
+
+
+
+            <label>
+                Drive Date
+            </label>
+
+
+            <input
+                id="companyDate"
+                type="date"
+                required>
+
+
+
+            <label>
+                Job Role
+            </label>
+
+
+            <input
+                id="companyRole"
+                type="text"
+                placeholder="Software Developer"
+                required>
+
+
+
+            <label>
+                Package
+            </label>
+
+
+            <input
+                id="companyPackage"
+                type="text"
+                placeholder="Example: 7 LPA">
+
+
+
+            <label>
+                Location
+            </label>
+
+
+            <input
+                id="companyLocation"
+                type="text"
+                placeholder="Bangalore">
+
+
+
+            <label>
+                Requirements
+            </label>
+
+
+            <textarea
+                id="companyRequirements"
+                placeholder="CGPA, skills, backlog requirements..."></textarea>
+
+
+
+            <label>
+                Notes
+            </label>
+
+
+            <textarea
+                id="companyNotes"
+                placeholder="Important information about this company..."></textarea>
+
+
+
+            <label>
+                Status
+            </label>
+
+
+            <div class="status-options">
+
+
+                <button
+                    type="button"
+                    data-status="Upcoming"
+                    onclick="selectStatus('Upcoming')">
+
+                    📅 Upcoming
+
+                </button>
+
+
+                <button
+                    type="button"
+                    data-status="Attended"
+                    onclick="selectStatus('Attended')">
+
+                    ✅ Attended
+
+                </button>
+
+
+                <button
+                    type="button"
+                    data-status="Selected"
+                    onclick="selectStatus('Selected')">
+
+                    🎉 Selected
+
+                </button>
+
+
+                <button
+                    type="button"
+                    data-status="Rejected"
+                    onclick="selectStatus('Rejected')">
+
+                    ❌ Rejected
+
+                </button>
+
+
+                <button
+                    type="button"
+                    data-status="Not Going"
+                    onclick="selectStatus('Not Going')">
+
+                    🚫 Not Going
+
+                </button>
+
+
+            </div>
+
+
+            <input
+                type="hidden"
+                id="companyStatus"
+                value="Upcoming">
+
+
+            <button
+                class="save-btn"
+                type="submit">
+
+                Save Company
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- ==========================================
+     TASK MODAL
+=========================================== -->
+
+<div
+    id="taskModal"
+    class="modal">
+
+
+    <div class="modal-box">
+
+
+        <div class="modal-heading">
+
+
+            <h2>
+                Add Study Task
+            </h2>
+
+
+            <button
+                onclick="closeTaskModal()">
+
+                ×
+
+            </button>
+
+
+        </div>
+
+
+
+        <form id="taskForm">
+
+
+            <label>
+                Task
+            </label>
+
+
+            <input
+                id="taskName"
+                type="text"
+                placeholder="Practice Java Arrays"
+                required>
+
+
+
+            <label>
+                Category
+            </label>
+
+
+            <div class="task-options">
+
+
+                <button
+                    type="button"
+                    onclick="selectCategory('DSA')">
+
+                    💻 DSA
+
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="selectCategory('Java')">
+
+                    ☕ Java
+
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="selectCategory('Aptitude')">
+
+                    🧠 Aptitude
+
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="selectCategory('SQL')">
+
+                    🗄️ SQL
+
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="selectCategory('Resume')">
+
+                    📄 Resume
+
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="selectCategory('Other')">
+
+                    📌 Other
+
+                </button>
+
+
+            </div>
+
+
+            <input
+                type="hidden"
+                id="taskCategory"
+                value="DSA">
+
+
+
+            <label>
+                Due Date
+            </label>
+
+
+            <input
+                id="taskDate"
+                type="date">
+
+
+
+            <label>
+                Priority
+            </label>
+
+
+            <div class="task-options">
+
+
+                <button
+                    type="button"
+                    onclick="selectPriority('Low')">
+
+                    🟢 Low
+
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="selectPriority('Medium')">
+
+                    🟡 Medium
+
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="selectPriority('High')">
+
+                    🔴 High
+
+                </button>
+
+
+            </div>
+
+
+            <input
+                type="hidden"
+                id="taskPriority"
+                value="Medium">
+
+
+
+            <label>
+                Notes
+            </label>
+
+
+            <textarea
+                id="taskNotes"
+                placeholder="What should you remember?"></textarea>
+
+
+
+            <button
+                class="save-btn"
+                type="submit">
+
+                Add Task
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- ==========================================
+     STATUS MODAL
+=========================================== -->
+
+<div
+    id="statusModal"
+    class="modal">
+
+
+    <div class="status-modal-box">
+
+
+        <div class="modal-heading">
+
+
+            <div>
+
+                <h2>
+                    Update Status
+                </h2>
+
+                <p id="statusCompanyName">
+                    Company
+                </p>
+
+            </div>
+
+
+            <button
+                onclick="closeStatusModal()">
+
+                ×
+
+            </button>
+
+
+        </div>
+
+
+
+        <div class="status-list">
+
+
+            <button
+                class="status-choice upcoming-choice"
+                onclick="setCompanyStatus('Upcoming')">
+
+                <span>
+                    📅
+                </span>
+
+
+                <div>
+
+                    <strong>
+                        Upcoming
+                    </strong>
+
+                    <small>
+                        Drive is yet to happen
+                    </small>
+
+                </div>
+
+            </button>
+
+
+
+            <button
+                class="status-choice attended-choice"
+                onclick="setCompanyStatus('Attended')">
+
+                <span>
+                    ✅
+                </span>
+
+
+                <div>
+
+                    <strong>
+                        Attended
+                    </strong>
+
+                    <small>
+                        You attended this drive
+                    </small>
+
+                </div>
+
+            </button>
+
+
+
+            <button
+                class="status-choice selected-choice"
+                onclick="setCompanyStatus('Selected')">
+
+                <span>
+                    🎉
+                </span>
+
+
+                <div>
+
+                    <strong>
+                        Selected
+                    </strong>
+
+                    <small>
+                        You were selected
+                    </small>
+
+                </div>
+
+            </button>
+
+
+
+            <button
+                class="status-choice rejected-choice"
+                onclick="setCompanyStatus('Rejected')">
+
+                <span>
+                    ❌
+                </span>
+
+
+                <div>
+
+                    <strong>
+                        Rejected
+                    </strong>
+
+                    <small>
+                        You were not selected
+                    </small>
+
+                </div>
+
+            </button>
+
+
+
+            <button
+                class="status-choice notgoing-choice"
+                onclick="setCompanyStatus('Not Going')">
+
+                <span>
+                    🚫
+                </span>
+
+
+                <div>
+
+                    <strong>
+                        Not Going
+                    </strong>
+
+                    <small>
+                        You decided not to attend
+                    </small>
+
+                </div>
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
